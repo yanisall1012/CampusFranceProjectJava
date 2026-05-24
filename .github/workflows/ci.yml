@@ -1,0 +1,33 @@
+name: Java Maven CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout du projet
+      uses: actions/checkout@v4
+
+    - name: Installer Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+        cache: maven
+
+    - name: Build Maven
+      run: mvn clean install
+
+    - name: Tests
+      run: mvn test
