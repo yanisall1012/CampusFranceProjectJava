@@ -8,6 +8,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
 import java.util.List;
@@ -71,6 +72,12 @@ public class RegisterStepDefinitions {
     @Soit("je suis sur la page d'inscription de CampusFrance")
     public void jeSuisSurLaPageDInscription() throws InterruptedException {
         WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1080");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.navigate().to("https://www.campusfrance.org/fr/user/register");
