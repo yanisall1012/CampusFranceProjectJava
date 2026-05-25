@@ -78,7 +78,7 @@ public class RegisterStepDefinitions {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
         options.addArguments("--window-size=1920,1080");
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.navigate().to("https://www.campusfrance.org/fr/user/register");
         Thread.sleep(5000);
